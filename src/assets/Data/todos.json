@@ -5,7 +5,7 @@
         "sno." :1,
         "title": "Using http",
         "desc": "Using http try to fetch from localfile",
-        "activate": false
+        "active": false
     },
     {
         "sno." :2,

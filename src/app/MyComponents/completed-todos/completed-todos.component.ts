@@ -15,27 +15,31 @@ export class CompletedTodosComponent implements OnInit {
   todos: Todo[];
   localItem: string;
   constructor(private todoService: TodoService) {
-    this.localItem = localStorage.getItem("todos") || '';
-    if(this.localItem === ''){
-      this.todos = [];
-    }
-    else{
-      this.todos = JSON.parse(this.localItem);
-    }
-
+    // this.localItem = localStorage.getItem("todos") || '';
+    // if(this.localItem === ''){
+    //   this.todos = [];
+    // }
+    // else{
+    //   this.todos = JSON.parse(this.localItem);
+    // }
    }
 
   ngOnInit(): void {
-    //this.todoService.getTodos().subscribe(data => this.todos = data);
+    // this.todoService.getTodos().subscribe((data: Todo[]) => 
+    // {
+    //   this.todos = data
+    // });
+    this.todos = this.todoService.getTodos();
   }
 
 
   onClick(todo: Todo){
     console.log(todo);
-    const index =  this.todos.indexOf(todo);
-    if(index > -1){
-      this.todos.splice(index, 1);
-      localStorage.setItem("todos", JSON.stringify(this.todos))
-    }
+    // const index =  this.todos.indexOf(todo);
+    // if(index > -1){
+    //   this.todos.splice(index, 1);
+    //   localStorage.setItem("todos", JSON.stringify(this.todos))
+    // }
+    this.todoService.deleteTodo(todo);
   }
 }
